@@ -48,6 +48,37 @@ public class Q19_Remove_Nth_From_End {
         return dummyHead.next;
     }
 
+    /**
+     * 一次遍历，两个节点
+     * 第一个节点从第n个节点开始遍历，第二个节点从头开始，
+     * 同时移动，当第一个节点到达尾部时，第一个节点到达要删除节点当前置节点
+     * 在要删除节点当前置节点进行删除操作
+     */
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+        ListNode first = dummyHead;
+        ListNode second = dummyHead;
+        // 共5个节点，n = 2
+        // 第一次循环，i = 0, first = 第1个节点
+        // 第二次循环，i = 1, first = 第2个节点
+        for (int i = 0; i < n; i++) {
+            first = first.next;
+        }
+
+        // 第1次循环，first = 第3个节点，second = 第1个节点
+        // 第2次循环，first = 第4个节点，second = 第2个节点
+        // 第3次循环，first = 第5个节点，second = 第3个节点
+        while (first.next != null) {
+            first = first.next;
+            second = second.next;
+        }
+        // 在第三个节点处删除第四个节点
+        second.next = second.next.next;
+        return dummyHead.next;
+    }
+
+
     public static void main(String[] args) {
         ListNode dummyHead = new ListNode(0);
         ListNode head = new ListNode(1);
@@ -65,7 +96,7 @@ public class Q19_Remove_Nth_From_End {
             current = current.next;
         }
         System.out.println();
-        ListNode listNode = new Q19_Remove_Nth_From_End().removeNthFromEnd(dummyHead.next, 2);
+        ListNode listNode = new Q19_Remove_Nth_From_End().removeNthFromEnd2(dummyHead.next, 2);
         while (listNode != null) {
             System.out.print(listNode.val + "->");
             if (listNode.next == null) {
