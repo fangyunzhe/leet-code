@@ -37,9 +37,9 @@ public class Q19_Remove_Nth_From_End {
         int delNodePreIndex = length - n;
         ListNode first = dummyHead;
         // length = 5, n = 2, delNodePreIndex = 3
-        // 第一次循环：delNodePreIndex = 2，first = 第二个节点
-        // 第二次循环：delNodePreIndex = 1, first = 第三个节点
-        // 第三次循环：delNodePreIndex = 0，first = 第四个节点
+        // 第一次循环：delNodePreIndex = 2，first = 第1个节点
+        // 第二次循环：delNodePreIndex = 1, first = 第2个节点
+        // 第三次循环：delNodePreIndex = 0，first = 第3个节点
         while (delNodePreIndex > 0) {
             delNodePreIndex--;
             first = first.next;
@@ -53,7 +53,7 @@ public class Q19_Remove_Nth_From_End {
         ListNode head = new ListNode(1);
         dummyHead.next = head;
         for (int i = 1; i < 5; i++) {
-            head.next = new ListNode(i+1);
+            head.next = new ListNode(i + 1);
             head = head.next;
         }
         new Q19_Remove_Nth_From_End().removeNthFromEnremoveNthFromEndd(dummyHead.next, 2);
