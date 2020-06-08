@@ -17,6 +17,9 @@ package linkedlist;
  **/
 public class Q2_Add_Two_Numbers {
 
+    /**
+     * 注意最后的进位
+     */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int carry = 0;
         ListNode dummyHead = new ListNode(0);
