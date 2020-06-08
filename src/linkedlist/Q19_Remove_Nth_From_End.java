@@ -56,6 +56,22 @@ public class Q19_Remove_Nth_From_End {
             head.next = new ListNode(i + 1);
             head = head.next;
         }
-        new Q19_Remove_Nth_From_End().removeNthFromEnd(dummyHead.next, 2);
+        ListNode current = dummyHead.next;
+        while (current != null) {
+            System.out.print(current.val + "->");
+            if (current.next == null) {
+                System.out.print("NULL");
+            }
+            current = current.next;
+        }
+        System.out.println();
+        ListNode listNode = new Q19_Remove_Nth_From_End().removeNthFromEnd(dummyHead.next, 2);
+        while (listNode != null) {
+            System.out.print(listNode.val + "->");
+            if (listNode.next == null) {
+                System.out.print("NULL");
+            }
+            listNode = listNode.next;
+        }
     }
 }
