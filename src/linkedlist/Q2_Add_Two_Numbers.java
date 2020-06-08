@@ -13,6 +13,7 @@ package linkedlist;
  * 输出：7 -> 0 -> 8
  * 原因：342 + 465 = 807
  * <p>
+ * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/add-two-numbers
  **/
 public class Q2_Add_Two_Numbers {

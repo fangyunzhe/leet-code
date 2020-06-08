@@ -15,6 +15,7 @@ package linkedlist;
  * 进阶：
  * 你能尝试使用一趟扫描实现吗？
  * <p>
+ * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list
  **/
 public class Q19_Remove_Nth_From_End {
