@@ -24,7 +24,7 @@ public class Q19_Remove_Nth_From_End {
      * 第一次遍历计算链表的长度，计算出要删除节点的前置节点的位置，delIndex = length - n + 1
      * 第二次遍历到要删除节点的前置节点进行删除操作
      */
-    public ListNode removeNthFromEnremoveNthFromEndd(ListNode head, int n) {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummyHead = new ListNode(0);
         dummyHead.next = head;
         ListNode current = head;
@@ -56,6 +56,6 @@ public class Q19_Remove_Nth_From_End {
             head.next = new ListNode(i + 1);
             head = head.next;
         }
-        new Q19_Remove_Nth_From_End().removeNthFromEnremoveNthFromEndd(dummyHead.next, 2);
+        new Q19_Remove_Nth_From_End().removeNthFromEnd(dummyHead.next, 2);
     }
 }
