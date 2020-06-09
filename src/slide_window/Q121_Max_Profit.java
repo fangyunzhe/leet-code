@@ -24,7 +24,25 @@ package slide_window;
  * 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock
  **/
 public class Q121_Max_Profit {
+    /**
+     * 遍历数组，在每一天都找到历史最低点
+     */
     public int maxProfit(int[] prices) {
-        return 0;
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        for (int price : prices) {
+            if (price < minPrice) {
+                minPrice = price;
+            }
+            if (price - minPrice > maxProfit) {
+                maxProfit = price - minPrice;
+            }
+        }
+        return maxProfit;
+    }
+
+    public static void main(String[] args) {
+        int[] prices = {7, 6, 4, 3, 1};
+        System.out.println(new Q121_Max_Profit().maxProfit(prices));
     }
 }
