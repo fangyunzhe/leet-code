@@ -2,6 +2,7 @@ package slide_window;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * @Author fyz
@@ -27,6 +28,7 @@ import java.util.Set;
  * 链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
  **/
 public class Q3_Length_Of_Longest_Substring {
+
     public int lengthOfLongestSubstring(String s) {
         int res = 0;
         int left = 0;
@@ -35,12 +37,12 @@ public class Q3_Length_Of_Longest_Substring {
         while (left < s.length() && right < s.length()) {
             char c = s.charAt(right);
             if (set.contains(c)) {
-                set.remove(c);
+                set.remove(s.charAt(left));
                 left++;
             } else {
                 set.add(c);
                 right++;
-                res = Math.max(res, set.size());
+                res = Math.max(set.size(), res);
             }
         }
         return res;
