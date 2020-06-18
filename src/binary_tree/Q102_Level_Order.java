@@ -17,10 +17,23 @@ public class Q102_Level_Order {
         }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        List<List<Integer>> list = new ArrayList<>();
+        List<List<Integer>> ret = new ArrayList<>();
         while (!queue.isEmpty()) {
-            queue.poll();
+            int count = queue.size();
+            List<Integer> list = new ArrayList<>();
+            while (count > 0) {
+                TreeNode current = queue.remove();
+                list.add(current.val);
+                if (current.left != null) {
+                    queue.add(current.left);
+                }
+                if (current.right != null) {
+                    queue.add(current.right);
+                }
+                count--;
+            }
+            ret.add(list);
         }
-        return null;
+        return ret;
     }
 }
