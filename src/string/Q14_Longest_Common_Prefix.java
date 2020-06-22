@@ -24,7 +24,49 @@ package string;
  * 链接：https://leetcode-cn.com/problems/longest-common-prefix
  **/
 public class Q14_Longest_Common_Prefix {
+    /**
+     * 依次遍历每个字符串，不断更新最大公共前缀
+     */
     public String longestCommonPrefix(String[] strs) {
-        return null;
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        String prefix = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            prefix = longestCommonPrefix(prefix, strs[i]);
+            if (prefix.length() == 0) {
+                break;
+            }
+        }
+        return prefix;
+    }
+
+    private String longestCommonPrefix(String prefix, String str) {
+        int length = Math.min(prefix.length(), str.length());
+        int index = 0;
+        while (index < length && prefix.charAt(index) == str.charAt(index)) {
+            index++;
+        }
+        return prefix.substring(0, index);
+    }
+
+    /**
+     * 依次遍历每个元素的每个字符
+     */
+    public String longestCommonPrefix2(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        int length = strs[0].length();
+        int size = strs.length;
+        for (int i = 0; i < length; i++) {
+            char c = strs[0].charAt(i);
+            for (int j = 0; j < size; j++) {
+                if (strs[j].length() == i || strs[j].charAt(i) != c) {
+                    return strs[0].substring(0, i);
+                }
+            }
+        }
+        return strs[0];
     }
 }
