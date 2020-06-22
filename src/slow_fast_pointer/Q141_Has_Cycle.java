@@ -1,4 +1,6 @@
-package linkedlist;
+package slow_fast_pointer;
+
+import linkedlist.ListNode;
 
 import java.util.HashSet;
 import java.util.Set;
