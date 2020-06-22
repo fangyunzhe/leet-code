@@ -28,8 +28,8 @@ public class Q121_Max_Profit {
      * 遍历数组，在每一天都找到历史最低点
      */
     public int maxProfit(int[] prices) {
-        int minPrice = Integer.MAX_VALUE;
         int maxProfit = 0;
+        int minPrice = Integer.MAX_VALUE;
         for (int price : prices) {
             if (price < minPrice) {
                 minPrice = price;
