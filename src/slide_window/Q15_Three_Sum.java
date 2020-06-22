@@ -1,5 +1,7 @@
 package slide_window;
 
+import java.util.List;
+
 /**
  * @Author fyz
  * @Date 2020/6/9 18:09
@@ -16,7 +18,10 @@ package slide_window;
  * ]
  * <p>
  * 链接：https://leetcode-cn.com/problems/3sum
- * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  **/
 public class Q15_Three_Sum {
+    public List<List<Integer>> threeSum(int[] nums) {
+        //todo
+        return null;
+    }
 }

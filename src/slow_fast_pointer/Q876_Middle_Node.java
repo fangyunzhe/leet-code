@@ -41,8 +41,8 @@ public class Q876_Middle_Node {
         }
         int middle = length / 2 + 1;
         int first = 0;
-        // first = 1,2,3,4
-        // dummyHead = 1,2
+        // first = 1->2->3->4
+        // dummyHead = 1->2
         while (dummyHead.next != null) {
             first++;
             if (first == middle) {

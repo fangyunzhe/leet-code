@@ -17,7 +17,6 @@ package slide_window;
  * -10^4 <= target <= 10^4
  * <p>
  * 链接：https://leetcode-cn.com/problems/3sum-closest
- * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  **/
 public class Q16_Three_Sum_Closest {
     public int threeSumClosest(int[] nums, int target) {
