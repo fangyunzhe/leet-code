@@ -22,6 +22,41 @@ package numbers;
  **/
 public class Q8_My_Atoi {
     public int myAtoi(String str) {
-        return 0;
+        // 去除空格
+        str = str.trim();
+        if (str.length() == 0) {
+            return 0;
+        }
+        boolean negative = false;
+        // 以符号开头，进行截取
+        if (str.charAt(0) == '-') {
+            negative = true;
+            str = str.substring(1);
+        } else if (str.charAt(0) == '+') {
+            str = str.substring(1);
+        }
+        int res = 0;
+        // 开始循环字符并计算结果
+        // 遇到第一个不是数字的字符终止循环
+        for (int i = 0; i < str.length(); i++) {
+            char t = str.charAt(i);
+            if (Character.isDigit(t)) {
+                // 结算结果
+                int temp = res * 10 + (t - '0');
+                // 如果越界则根据符号返回最小值或最大值
+                if ((temp - (t - '0')) / 10 != res || temp < 0) {
+                    return negative ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+                }
+                res = temp;
+            } else {
+                break;
+            }
+        }
+        return negative ? -res : res;
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Q8_My_Atoi().myAtoi("4193 with words"));
     }
 }
