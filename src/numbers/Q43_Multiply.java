@@ -25,31 +25,70 @@ package numbers;
  **/
 public class Q43_Multiply {
     public String multiply(String num1, String num2) {
-        if ("0".equalsIgnoreCase(num1) || "0".equals(num2)) {
+        if ("0".equals(num1) || "0".equals(num2)) {
             return "0";
         }
-        String res;
-        long sum = 0;
-        int carry = 0;
-        for (int i = num1.length(), f = 0; i > 0; i--, f++) {
-            for (int j = num2.length(), g = 1; j > 0; j--, g *= 10) {
-                int a = num1.charAt(i - 1) - '0';
-                int b = num2.charAt(j - 1) - '0';
-                int temp = a * b % 10 + carry;
-                carry = a * b / 10;
-                sum = temp * g * 10 + sum;
+        String res = "0";
+        // num2的每一位与num1相乘，结果相加
+        //     1 2 3
+        //     4 5 6
+        //----------
+        //     7 3 8
+        //   6 1 5 0
+        // 4 9 2 0 0
+        //----------
+        // 5 6 0 8 8
+        for (int i = num2.length() - 1; i >= 0; i--) {
+            int carry = 0;
+            StringBuilder temp = new StringBuilder();
+            // 末尾补0
+            for (int j = 0; j < num2.length() - 1 - i; j++) {
+                temp.append("0");
             }
-        }
-        res = String.valueOf(sum);
-        if (carry > 0) {
-            res = carry + res;
+            int n2 = num2.charAt(i) - '0';
+            for (int j = num1.length() - 1; j >= 0; j--) {
+                int n1 = num1.charAt(j)-'0';
+                int product = (n1 * n2 + carry) % 10;
+                temp.append(product);
+                carry = (n1 * n2 + carry) / 10;
+            }
+            if (carry>0){
+                temp.append(carry);
+            }
+            res = addString(res, temp.reverse().toString());
         }
         return res;
     }
 
+    private String addString(String num1, String num2) {
+        StringBuilder res = new StringBuilder();
+        int abs = Math.abs(num1.length() - num2.length());
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < abs; i++) {
+            sb.append("0");
+        }
+        if (num1.length() < num2.length()) {
+            num1 = sb.append(num1).toString();
+        } else {
+            num2 = sb.append(num2).toString();
+        }
+        int carry = 0;
+        for (int i = num2.length() - 1; i >= 0; i--) {
+            int n1 = num1.charAt(i) - '0';
+            int n2 = num2.charAt(i) - '0';
+            int temp = n1 + n2 + carry;
+            res.append(temp % 10);
+            carry = temp / 10;
+        }
+        if (carry == 1) {
+            res.append("1");
+        }
+        return res.reverse().toString();
+    }
+
     public static void main(String[] args) {
-        String num1 = "123";
-        String num2 = "456";
+        String num1 = "9";
+        String num2 = "9";
         System.out.println(new Q43_Multiply().multiply(num1, num2));
     }
 }
