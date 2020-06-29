@@ -29,11 +29,11 @@ public class Q15_Three_Sum {
         }
         Arrays.sort(nums);
         for (int i = 0; i < nums.length - 2; i++) {
-            // 第一个数大于0，和肯定大于0
+            // 第一个数大于0，后面的数都大于0
             if (nums[i] > 0) {
                 break;
             }
-            // 避免出现重复解
+            // 去除重复情况
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
@@ -42,19 +42,22 @@ public class Q15_Three_Sum {
             while (left < right) {
                 int sum = nums[i] + nums[left] + nums[right];
                 if (sum == 0) {
-                    res.add(new ArrayList<>(Arrays.asList(nums[i], nums[left], nums[right])));
-                    right--;
+                    res.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                    // 找到符合情况的元素继续寻找
                     left++;
+                    right--;
+                    // 去除重复
                     while (left < right && nums[left] == nums[left - 1]) {
                         left++;
                     }
+                    // 去除重复
                     while (left < right && nums[right] == nums[right + 1]) {
                         right--;
                     }
-                } else if (sum < 0) {
-                    left++;
-                } else {
+                } else if (sum > 0) {
                     right--;
+                } else {
+                    left++;
                 }
             }
         }
