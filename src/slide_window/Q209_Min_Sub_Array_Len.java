@@ -15,8 +15,22 @@ package slide_window;
 public class Q209_Min_Sub_Array_Len {
 
     public int minSubArrayLen(int s, int[] nums) {
-        int left = 0;
-        int right = 0;
-        return 0;
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int start = 0;
+        int end = 0;
+        int sum = 0;
+        int res = nums.length + 1;
+        while (end < nums.length) {
+            sum += nums[end];
+            while (sum >= s) {
+                sum -= nums[start];
+                res = Math.min(res, end - start + 1);
+                start++;
+            }
+            end++;
+        }
+        return res == nums.length + 1 ? 0 : res;
     }
 }
