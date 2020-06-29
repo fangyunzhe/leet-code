@@ -1,5 +1,7 @@
 package slide_window;
 
+import java.util.Arrays;
+
 /**
  * @Author fyz
  * @Date 2020/6/9 18:13
@@ -20,6 +22,25 @@ package slide_window;
  **/
 public class Q16_Three_Sum_Closest {
     public int threeSumClosest(int[] nums, int target) {
-        return 0;
+        Arrays.sort(nums);
+        int res = nums[0] + nums[1] + nums[2];
+        for (int i = 0; i < nums.length - 2; i++) {
+            int left = i + 1;
+            int right = nums.length - 1;
+            while (left < right) {
+                int sum = nums[i] + nums[left] + nums[right];
+                if (Math.abs(sum - target) < Math.abs(res - target)) {
+                    res = sum;
+                }
+                if (sum > target) {
+                    right--;
+                } else if (sum < target) {
+                    left++;
+                } else {
+                    return target;
+                }
+            }
+        }
+        return res;
     }
 }
