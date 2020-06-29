@@ -27,6 +27,7 @@ public class Q138_Copy_Random_List {
             return null;
         }
         Node node = head;
+        // map保存原节点与拷贝节点的映射关系
         Map<Node, Node> map = new HashMap<>();
         while (node != null) {
             Node clone = new Node(node.val);
@@ -34,6 +35,7 @@ public class Q138_Copy_Random_List {
             node = node.next;
         }
         node = head;
+        // 通过映射关系连接拷贝节点
         while (node != null) {
             map.get(node).next = map.get(node.next);
             map.get(node).random = map.get(node.random);
